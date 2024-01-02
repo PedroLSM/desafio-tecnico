@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.footer {
+  height: 32px !important;
+
+  span {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    color: #3f51b5;
+  }
+}

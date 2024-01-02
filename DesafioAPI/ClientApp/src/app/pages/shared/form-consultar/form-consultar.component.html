@@ -1,0 +1,30 @@
+<form class="form" [formGroup]="form">
+    <mat-form-field class="tipo-field" appearance="fill">
+        <mat-label>Consulta Por</mat-label>
+        <mat-select formControlName="tipo" name="tipo" required>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+                {{ tipo }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="valor-field" appearance="fill">
+        <mat-label>Filtro</mat-label>
+        <input matInput formControlName="valor" title="Filtro" [placeholder]="'Informe o ' + tipo"
+            [type]="tipo == 'Id' ? 'number' : 'text'">
+    </mat-form-field>
+
+    <div class="consultar-field">
+        <button type="submit" mat-raised-button color="primary" (click)="consultar()">
+            <mat-icon>search</mat-icon>
+            Consultar
+        </button>
+    </div>
+
+    <div class="cadastrar-field">
+        <button type="submit" mat-raised-button color="accent" (click)="cadastrar()">
+            <mat-icon>add</mat-icon>
+            {{ btnText }}
+        </button>
+    </div>
+</form>

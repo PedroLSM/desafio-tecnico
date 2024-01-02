@@ -1,0 +1,15 @@
+<mat-toolbar class="breadcrumb">
+    <span class="active">Clientes</span>
+</mat-toolbar>
+
+<app-form-consultar (consultar)="consultarClientes($event)" (cadastrar)="cadastrarCliente()"
+    [tiposConsulta]="['Nome', 'Id']" />
+
+<ng-container *ngIf="clientes$">
+    <app-listar-clientes (atualizarLista)="consultarClientes(model)" [dados]="dados"
+        *ngIf="clientes$ | async as dados; else loading;" />
+
+    <ng-template #loading>
+        <mat-progress-bar mode="indeterminate" />
+    </ng-template>
+</ng-container>

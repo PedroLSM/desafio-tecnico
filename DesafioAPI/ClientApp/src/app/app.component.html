@@ -1,0 +1,16 @@
+<mat-drawer-container class="container" [hasBackdrop]="true">
+
+    <mat-drawer #drawer mode="over" [autoFocus]="false">
+        <app-sidenav [drawer]="drawer" />
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <app-header [drawer]="drawer"></app-header>
+
+        <app-main>
+            <router-outlet></router-outlet>
+        </app-main>
+
+        <app-footer></app-footer>
+    </mat-drawer-content>
+</mat-drawer-container>

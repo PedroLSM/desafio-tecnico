@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>
+    Cadastrar Cliente
+</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome Completo</mat-label>
+            <input title="Nome Completo" placeholder="Informe o nome completo" type="text" matInput
+                formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select (ngModelChange)="onChangeSexo($event)" formControlName="sexo" name="sexo" required>
+                <mat-option *ngFor="let sexo of sexos" [value]="sexo">
+                    {{ sexo }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="sexoSelecionado == 'Outro'">
+            <mat-label>Qual?</mat-label>
+            <input title="Qual?" placeholder="Informe o sexo" type="text" matInput formControlName="outroQual" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input title="Data de Nascimento" placeholder="DD/MM/AAAA" matInput [max]="maxDate" [matDatepicker]="dp"
+                formControlName="dataNascimento">
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <mat-select formControlName="cidadeId" name="cidade" required>
+                <mat-option *ngFor="let cidade of cidades$ | async" [value]="cidade.id">
+                    {{ cidade.nome }} / {{ cidade.estado }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+
+<div class="d-btns" mat-dialog-actions *ngIf="!(cadastrando$ | async); else cadastrando;">
+    <button type="button" mat-stroked-button mat-dialog-close>Cancelar</button>
+    <button type="submit" mat-raised-button color="primary" (click)="cadastrar()" cdkFocusInitial>
+        Salvar
+    </button>
+</div>
+
+<ng-template #cadastrando>
+    <div class="d-btns" mat-dialog-actions>
+        <button type="button" mat-stroked-button disabled>Cancelar</button>
+
+        <button type="button" mat-raised-button color="primary" disabled title="Cadastrando">
+            <mat-spinner diameter="20"></mat-spinner>
+        </button>
+    </div>
+</ng-template>

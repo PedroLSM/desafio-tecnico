@@ -1,0 +1,14 @@
+<mat-toolbar class="breadcrumb">
+    <span class="active">Cidades</span>
+</mat-toolbar>
+
+<app-form-consultar (consultar)="consultarCidades($event)" (cadastrar)="cadastrarCidade()"
+    [tiposConsulta]="['Nome', 'Estado']" />
+
+<ng-container *ngIf="cidades$">
+    <app-listar-cidades *ngIf="cidades$ | async as dados; else loading;" [dados]="dados" />
+
+    <ng-template #loading>
+        <mat-progress-bar mode="indeterminate" />
+    </ng-template>
+</ng-container>

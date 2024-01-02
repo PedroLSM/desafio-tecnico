@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>
+    Alterar Nome do Cliente
+</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome Completo</mat-label>
+            <input title="Nome Completo" placeholder="Informe o nome completo" type="text" matInput
+                formControlName="nome">
+        </mat-form-field>
+    </form>
+</div>
+
+<div class="d-btns" mat-dialog-actions *ngIf="!(alterando$ | async); else alterando;">
+    <button type="button" mat-stroked-button mat-dialog-close>Cancelar</button>
+    <button type="submit" mat-raised-button color="primary" (click)="alterar()" cdkFocusInitial>
+        Salvar
+    </button>
+</div>
+
+<ng-template #alterando>
+    <div class="d-btns" mat-dialog-actions>
+        <button type="button" mat-stroked-button disabled>Cancelar</button>
+
+        <button type="button" mat-raised-button color="primary" disabled title="Alterando">
+            <mat-spinner diameter="20"></mat-spinner>
+        </button>
+    </div>
+</ng-template>

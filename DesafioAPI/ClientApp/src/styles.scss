@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.danger-snackbar {
+    white-space: pre-wrap !important;
+    --mdc-snackbar-container-color: #ea5165 !important;
+    --mat-mdc-snack-bar-button-color: #fff !important;
+}
+
+.success-snackbar {
+    white-space: pre-wrap !important;
+    --mdc-snackbar-container-color: #1fcd98 !important;
+    --mat-mdc-snack-bar-button-color: #000 !important;
+    --mdc-snackbar-supporting-text-color: #000 !important;
+}
+
+.mat-mdc-dialog-title {
+    text-align: center !important;
+}
+
+.mat-mdc-form-field {
+    width: 100%;
+}
+
+.mdc-text-field--disabled .mdc-text-field__input {
+    color: black !important;
+}
+
+.mdc-text-field--disabled .mdc-floating-label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.d-btns {
+    display: grid !important;
+    gap: 1rem;
+    grid-template-columns: 0.5fr 0.5fr;
+}
+
+.breadcrumb {
+    margin-bottom: 1rem !important;
+    border-radius: var(--mdc-shape-small, 4px);
+
+    .active {
+        color: #6c757d;
+    }
+}
+
+.r404 {
+    padding-top: 1rem;
+    text-align: center;
+}

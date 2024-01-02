@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>
+    Remover Cliente
+</h1>
+
+<div mat-dialog-content>
+    <p>
+        Tem certeza que deseja remover este cliente:
+    </p>
+
+    <p>
+        <b>Nome: </b> <span>{{ data.cliente.nome }}</span> <br>
+        <b>Sexo: </b> <span>{{ data.cliente.sexo }}</span> <br>
+        <b>Idade: </b> <span>{{ data.cliente.idade }} anos</span> <br>
+        <b>Localização: </b> <span>{{ data.cliente.cidade.nome }} / {{ data.cliente.cidade.estado }}</span>
+    </p>
+</div>
+
+<div class="d-btns" mat-dialog-actions *ngIf="!(removendo$ | async); else removendo;">
+    <button type="button" mat-stroked-button mat-dialog-close>Não</button>
+    <button type="submit" mat-raised-button color="warn" (click)="remover()" cdkFocusInitial>
+        Sim
+    </button>
+</div>
+
+<ng-template #removendo>
+    <div class="d-btns" mat-dialog-actions>
+        <button type="button" mat-stroked-button disabled>Não</button>
+
+        <button type="button" mat-raised-button color="warn" disabled title="Removendo">
+            <mat-spinner diameter="20"></mat-spinner>
+        </button>
+    </div>
+</ng-template>

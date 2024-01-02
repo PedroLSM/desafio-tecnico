@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 300px !important;
+}
+
+.active {
+  background-color: #c0c0c0 !important;
+}
+
+.text-link {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 0.12fr 0.88fr;
+}
